@@ -1,0 +1,586 @@
+/**
+ * Starbucks-inspired Checkout Page Styles
+ */
+
+:root {
+  --starbucks-green: #00704a;
+  --starbucks-dark-green: #005239;
+  --starbucks-light-green: #d4e9e2;
+  --starbucks-cream: #f7f7f7;
+  --white: #ffffff;
+  --text-primary: #1e1e1e;
+  --text-secondary: #6f6f6f;
+  --border-light: #e8e8e8;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 8px 24px rgba(0, 112, 74, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--starbucks-green);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.logo i {
+  font-size: 32px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+
+.nav-menu a:hover {
+  background-color: var(--starbucks-light-green);
+  color: var(--starbucks-green);
+}
+
+.btn-logout {
+  background-color: transparent !important;
+  color: var(--starbucks-green) !important;
+  border: 2px solid var(--starbucks-green) !important;
+  padding: 8px 24px !important;
+  font-weight: 700 !important;
+}
+
+.btn-logout:hover {
+  background-color: var(--starbucks-green) !important;
+  color: var(--white) !important;
+}
+
+/* Checkout Section */
+.checkout-section {
+  padding: 60px 0 80px;
+  background-color: var(--starbucks-cream);
+  min-height: calc(100vh - 200px);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--starbucks-green);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Form Wrapper */
+.checkout-form-wrapper {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.form-section {
+  padding: 32px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.section-header i {
+  font-size: 24px;
+  color: var(--starbucks-green);
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: var(--transition);
+  background-color: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--starbucks-green);
+  box-shadow: 0 0 0 3px rgba(0, 112, 74, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Payment Methods */
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.payment-method {
+  position: relative;
+}
+
+.payment-method input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.payment-method label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--white);
+  text-align: center;
+  min-height: 140px;
+  justify-content: center;
+}
+
+.payment-method label:hover {
+  border-color: var(--starbucks-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.payment-method input[type="radio"]:checked + label {
+  border-color: var(--starbucks-green);
+  background: var(--starbucks-light-green);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.02);
+}
+
+.payment-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.payment-method input[type="radio"]:checked + label .payment-icon {
+  background: var(--starbucks-green);
+}
+
+.payment-icon i {
+  font-size: 24px;
+  color: var(--starbucks-green);
+  transition: var(--transition);
+}
+
+.payment-method input[type="radio"]:checked + label .payment-icon i {
+  color: var(--white);
+}
+
+.payment-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.payment-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* Order Summary Box */
+.order-summary-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.order-summary-box h2 {
+  font-size: 22px;
+  color: var(--starbucks-green);
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+.order-items-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 8px;
+}
+
+.order-items-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-items-list::-webkit-scrollbar-track {
+  background: var(--starbucks-cream);
+  border-radius: 10px;
+}
+
+.order-items-list::-webkit-scrollbar-thumb {
+  background: var(--starbucks-green);
+  border-radius: 10px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-details h4 {
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.item-quantity {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.item-price {
+  font-weight: 700;
+  color: var(--starbucks-green);
+  font-size: 15px;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+
+.summary-divider {
+  height: 2px;
+  background: var(--starbucks-cream);
+  margin: 20px 0;
+}
+
+.summary-calculations {
+  margin-bottom: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.summary-row span:first-child {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.summary-row span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.summary-row.total {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--starbucks-green);
+}
+
+.summary-row.total span:first-child {
+  color: var(--text-primary);
+}
+
+.summary-row.total span:last-child {
+  color: var(--starbucks-green);
+}
+
+/* Place Order Button */
+.btn-place-order {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  border: 2px solid var(--starbucks-green);
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+.btn-place-order:hover {
+  background-color: var(--starbucks-dark-green);
+  border-color: var(--starbucks-dark-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-place-order:active {
+  transform: translateY(0);
+}
+
+.btn-place-order i {
+  font-size: 18px;
+}
+
+/* Secure Badge */
+.secure-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--starbucks-light-green);
+  border-radius: 8px;
+  color: var(--starbucks-dark-green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.secure-badge i {
+  font-size: 14px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .checkout-content {
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-section {
+    padding: 40px 0 60px;
+  }
+
+  .checkout-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .form-section {
+    padding: 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary-box {
+    position: relative;
+    top: 0;
+  }
+
+  .order-items-list {
+    max-height: 200px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .payment-method label {
+    padding: 20px 12px;
+    min-height: 120px;
+  }
+
+  .payment-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .payment-icon i {
+    font-size: 20px;
+  }
+
+  .payment-name {
+    font-size: 14px;
+  }
+
+  .order-summary-box {
+    padding: 20px;
+  }
+
+  .order-summary-box h2 {
+    font-size: 20px;
+  }
+
+  .summary-row.total {
+    font-size: 20px;
+  }
+
+  .btn-place-order {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}

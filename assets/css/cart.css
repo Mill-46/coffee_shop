@@ -1,0 +1,774 @@
+/* Starbucks-inspired Cart Page Styles */
+
+:root {
+  --starbucks-green: #00704a;
+  --starbucks-dark-green: #005239;
+  --starbucks-light-green: #d4e9e2;
+  --starbucks-cream: #f7f7f7;
+  --white: #ffffff;
+  --text-primary: #1e1e1e;
+  --text-secondary: #6f6f6f;
+  --border-light: #e8e8e8;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 8px 24px rgba(0, 112, 74, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "SoDo Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: var(--starbucks-cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header - WHITE BACKGROUND */
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--starbucks-green);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.logo i {
+  font-size: 32px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+
+.nav-menu li a:hover {
+  background-color: var(--starbucks-light-green);
+  color: var(--starbucks-green);
+}
+
+.nav-menu li a.active {
+  background-color: var(--starbucks-green);
+  color: var(--white);
+}
+
+.btn-logout,
+.btn-login {
+  background-color: transparent;
+  color: var(--starbucks-green);
+  border: 2px solid var(--starbucks-green);
+  padding: 8px 24px !important;
+  font-weight: 700;
+}
+
+.btn-logout:hover,
+.btn-login:hover {
+  background-color: var(--starbucks-green);
+  color: var(--white);
+}
+
+/* Cart Section */
+.cart-section {
+  padding: 60px 0 80px;
+  min-height: calc(100vh - 200px);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  color: var(--starbucks-green);
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+/* Empty Cart */
+.empty-cart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px 40px;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.empty-cart-illustration {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 40px;
+  background: linear-gradient(135deg, var(--starbucks-light-green), #e8f5f1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.empty-cart-illustration::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px dashed var(--starbucks-light-green);
+  animation: rotate 20s linear infinite;
+}
+
+.empty-cart-illustration i {
+  font-size: 80px;
+  color: var(--starbucks-green);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-cart-container h2 {
+  font-size: 32px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.empty-cart-container p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.empty-cart-subtitle {
+  font-size: 18px !important;
+  color: var(--starbucks-green) !important;
+  font-weight: 600 !important;
+  margin-bottom: 32px !important;
+}
+
+.btn-start-shopping {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 48px;
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  border: 2px solid var(--starbucks-green);
+  box-shadow: 0 4px 16px rgba(0, 112, 74, 0.2);
+  margin-bottom: 40px;
+}
+
+.btn-start-shopping:hover {
+  background-color: var(--starbucks-dark-green);
+  border-color: var(--starbucks-dark-green);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.empty-cart-features {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px solid var(--starbucks-cream);
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature-item i {
+  font-size: 32px;
+  color: var(--starbucks-green);
+}
+
+.feature-item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Cart Layout */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.btn-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #d62b1f;
+  border: 2px solid #d62b1f;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-clear:hover {
+  background-color: #d62b1f;
+  color: var(--white);
+}
+
+/* Cart Item */
+.cart-item {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  animation: slideUp 0.5s ease-out both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cart-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.item-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--starbucks-green);
+  margin-bottom: 8px;
+}
+
+.item-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.quantity-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--starbucks-cream);
+  padding: 6px;
+  border-radius: 50px;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--white);
+  color: var(--starbucks-green);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  background: var(--starbucks-green);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.qty-input {
+  width: 50px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.item-subtotal {
+  text-align: right;
+}
+
+.subtotal-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.subtotal-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--starbucks-green);
+}
+
+.btn-remove {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #ffebee;
+  color: #d62b1f;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-remove:hover {
+  background: #d62b1f;
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+/* Cart Summary */
+.cart-summary {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.cart-summary h3 {
+  font-size: 22px;
+  color: var(--starbucks-green);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.summary-row span:first-child {
+  color: var(--text-secondary);
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summary-divider {
+  height: 2px;
+  background: var(--starbucks-cream);
+  margin: 20px 0;
+}
+
+.summary-row.total {
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 16px;
+  border-top: 2px solid var(--starbucks-green);
+}
+
+.summary-row.total span {
+  color: var(--starbucks-green);
+}
+
+.btn-checkout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  border: 2px solid var(--starbucks-green);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-checkout:hover {
+  background-color: var(--starbucks-dark-green);
+  border-color: var(--starbucks-dark-green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-continue {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background-color: transparent;
+  color: var(--starbucks-green);
+  border: 2px solid var(--starbucks-green);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: var(--transition);
+  margin-bottom: 24px;
+}
+
+.btn-continue:hover {
+  background-color: var(--starbucks-light-green);
+}
+
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.trust-badge i {
+  color: var(--starbucks-green);
+  font-size: 16px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: 20px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUpModal 0.3s;
+}
+
+@keyframes slideUpModal {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 32px 32px 24px;
+  text-align: center;
+}
+
+.modal-header i {
+  font-size: 56px;
+  color: var(--starbucks-green);
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  font-size: 24px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 0 32px 32px;
+  text-align: center;
+}
+
+.modal-body p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.warning-text {
+  color: #d62b1f !important;
+  font-weight: 600 !important;
+}
+
+.modal-footer {
+  padding: 24px 32px 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 14px 24px;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 2px solid var(--border-light);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-cancel:hover {
+  background-color: var(--starbucks-cream);
+  border-color: var(--text-secondary);
+}
+
+.btn-confirm {
+  flex: 1;
+  padding: 14px 24px;
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  border: 2px solid var(--starbucks-green);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-confirm:hover {
+  background-color: var(--starbucks-dark-green);
+  border-color: var(--starbucks-dark-green);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--starbucks-green);
+  color: var(--white);
+  padding: 30px 0;
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cart-layout {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: relative;
+    top: 0;
+  }
+
+  .cart-item {
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+
+  .item-actions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .empty-cart-features {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-cart-container {
+    padding: 60px 24px;
+  }
+
+  .empty-cart-illustration {
+    width: 140px;
+    height: 140px;
+  }
+
+  .empty-cart-illustration i {
+    font-size: 60px;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .item-image {
+    width: 100%;
+    height: 180px;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+}

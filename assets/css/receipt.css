@@ -1,0 +1,483 @@
+/* Starbucks-inspired Receipt Styles */
+
+:root {
+    --starbucks-green: #00704A;
+    --starbucks-dark-green: #005239;
+    --starbucks-light-green: #d4e9e2;
+    --white: #ffffff;
+    --text-primary: #1e1e1e;
+    --text-secondary: #6f6f6f;
+    --border-color: #e8e8e8;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --success-color: #4caf50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.receipt-container {
+    max-width: 600px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 48px;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.receipt-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.brand-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--starbucks-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.brand-icon i {
+    font-size: 40px;
+    color: var(--white);
+}
+
+.receipt-header h1 {
+    font-size: 32px;
+    color: var(--starbucks-green);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.receipt-subtitle {
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.store-info {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 4px 0;
+}
+
+/* Divider */
+.receipt-divider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--border-color) 20%,
+        var(--border-color) 80%,
+        transparent 100%
+    );
+    margin: 24px 0;
+}
+
+/* Order Info Section */
+.order-info-section {
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 15px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.info-row .label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.info-row .value {
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: right;
+}
+
+.order-number {
+    font-size: 18px;
+    color: var(--starbucks-green) !important;
+    font-weight: 700 !important;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.payment-method i {
+    color: var(--starbucks-green);
+}
+
+.status-badge {
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.status-paid {
+    background: var(--starbucks-light-green);
+    color: var(--starbucks-dark-green);
+}
+
+.status-badge.status-pending {
+    background: #FFF3CD;
+    color: #856404;
+}
+
+/* Items Section */
+.items-section {
+    margin-bottom: 24px;
+}
+
+.items-section h2 {
+    font-size: 18px;
+    color: var(--starbucks-green);
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.receipt-item {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.receipt-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+    padding-right: 16px;
+}
+
+.item-total {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--starbucks-green);
+    white-space: nowrap;
+}
+
+.item-details {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Totals Section */
+.totals-section {
+    margin-bottom: 24px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+.total-row.subtotal,
+.total-row.tax {
+    color: var(--text-secondary);
+}
+
+.total-row.subtotal span:last-child,
+.total-row.tax span:last-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.total-row.grand-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--starbucks-green);
+    padding-top: 16px;
+    margin-top: 12px;
+    border-top: 2px solid var(--starbucks-green);
+    animation: highlight 0.6s ease-out;
+}
+
+@keyframes highlight {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Notes Section */
+.notes-section {
+    background: var(--starbucks-light-green);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.notes-section h3 {
+    font-size: 14px;
+    color: var(--starbucks-dark-green);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notes-section p {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Footer */
+.receipt-footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.thank-you {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--starbucks-green);
+    margin-bottom: 8px;
+}
+
+.footer-message {
+    font-size: 16px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.print-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.btn-print {
+    background: var(--starbucks-green);
+    color: var(--white);
+    border-color: var(--starbucks-green);
+}
+
+.btn-print:hover {
+    background: var(--starbucks-dark-green);
+    border-color: var(--starbucks-dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 112, 74, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--starbucks-green);
+    border-color: var(--starbucks-green);
+}
+
+.btn-secondary:hover {
+    background: var(--starbucks-light-green);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: var(--white);
+        padding: 0;
+    }
+
+    .receipt-container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .no-print,
+    .action-buttons {
+        display: none !important;
+    }
+
+    .receipt-divider {
+        background: #000;
+    }
+
+    .brand-icon {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .receipt-container {
+        padding: 32px 24px;
+    }
+
+    .brand-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .brand-icon i {
+        font-size: 30px;
+    }
+
+    .receipt-header h1 {
+        font-size: 26px;
+    }
+
+    .receipt-subtitle {
+        font-size: 16px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        min-width: 100%;
+    }
+
+    .total-row.grand-total {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .receipt-container {
+        padding: 24px 20px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .info-row .value {
+        text-align: left;
+    }
+
+    .item-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .item-name {
+        padding-right: 0;
+    }
+}
