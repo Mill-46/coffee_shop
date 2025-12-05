@@ -169,7 +169,7 @@ $total = $subtotal + $tax;
 
         <div class="receipt-footer">
             <p class="thank-you">Thank you for choosing Kafe Latte!</p>
-            <p class="footer-message">Have a great day! ☕</p>
+            <p class="footer-message">Have a great day!</p>
             <p class="print-time">Printed: <?php echo date('d/m/Y H:i:s'); ?></p>
         </div>
 
