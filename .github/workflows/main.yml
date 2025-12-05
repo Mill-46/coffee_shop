@@ -1,0 +1,47 @@
+name: Deploy to Docker
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ["self-hosted", "macOS", "ARM64"]
+
+    steps:
+      - name: Test version
+        run: echo "VERSION 3"
+
+      # 1. Checkout kode dari GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Unlock keychain
+        run: |
+          security -v unlock-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" ~/Library/Keychains/login.keychain-db
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "${{ secrets.KEYCHAIN_PASSWORD }}" ~/Library/Keychains/login.keychain-db
+
+      # 3. Show docker info
+      - name: Docker info
+        run: docker info
+
+      # 4. Pull latest images (optional)
+      - name: Pull latest images
+        run: docker compose pull || true
+
+      # 5. Stop container lama
+      - name: Stop existing containers
+        run: docker compose down || true
+
+      # 6. Build ulang project
+      - name: Build images
+        run: docker compose build --no-cache
+
+      # 7. Start container baru
+      - name: Start containers
+        run: docker compose up -d
+
+      # 8. Check running status
+      - name: Check running containers
+        run: docker ps -a
